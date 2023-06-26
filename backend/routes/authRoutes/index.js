@@ -109,12 +109,7 @@ const validateToken = require("../../controllers/verifyUser/index")
  *   post:
  *     summary: Getting user details
  *     tags: [User]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/User'
+ 
  *     responses:
  *       200:
  *         description: New user created.
@@ -137,12 +132,7 @@ const validateToken = require("../../controllers/verifyUser/index")
  *   post:
  *     summary: Logout
  *     tags: [User]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/User'
+ 
  *     responses:
  *       200:
  *         description: User logged out
@@ -163,12 +153,7 @@ const validateToken = require("../../controllers/verifyUser/index")
  *   post:
  *     summary: This endpoints generates an OTP when you input user email
  *     tags: [User]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/User'
+ 
  *     responses:
  *       200:
  *         description: Otp has been sent to email
@@ -192,12 +177,7 @@ const validateToken = require("../../controllers/verifyUser/index")
  *   post:
  *     summary: This endpoints verify OTP sent to user email
  *     tags: [User]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/User'
+ *     
  *     responses:
  *       200:
  *         description: Otp has been verified successfully
@@ -221,12 +201,7 @@ const validateToken = require("../../controllers/verifyUser/index")
  *   post:
  *     summary: This endpoints reset your password to new password
  *     tags: [User]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/User'
+ *   
  *     responses:
  *       200:
  *         description: Reset password successful

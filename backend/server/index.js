@@ -26,10 +26,10 @@ const options = {
     definition: {
       openapi: "3.1.0",
       info: {
-        title: "E-COMMERCE API",
+        title: " #30DaysBuildingAPis, E-COMMERCE API",
         version: "0.1.0",
         description:
-          "This is Panto project, an e-commerce project",
+          "This is Panto project, a multi-vendor e-commerce project",
         license: {
           name: "",
           url: "https://spdx.org/licenses/MIT.html",
@@ -51,8 +51,7 @@ const options = {
     swaggerUi.serve,
     swaggerUi.setup(specs, {
       explorer: true,
-      customCssUrl:
-        "https://cdn.jsdelivr.net/npm/swagger-ui-themes@3.0.0/themes/3.x/theme-newspaper.css",
+     
     })
   );
 app.listen(PORT, ()=>console.log("Express started, backendApis"))

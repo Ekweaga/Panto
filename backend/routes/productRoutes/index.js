@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router();
-const{getProducts,getProduct,deleteProduct,updateProduct} = require("../../controllers/products/index")
+const{getProducts,getProduct,deleteProduct,updateProduct,createProduct} = require("../../controllers/products/index")
 
 const validateToken = require("../../controllers/verifyUser/index")
 //const {userPic} = require("../controllers/userManagement")
@@ -14,30 +14,43 @@ const validateToken = require("../../controllers/verifyUser/index")
  *     Product:
  *       type: object
  *       required:
- *         - username
- *         - email
- *         - password
+ *         - productName
+ *         - productDesc
+ *         - countInStock
+ *         - rating
+ *         - numReviews
+ *         - category
+ *         - brand
+ *         - price
+ *         - productImage
  *       properties:
  *         
- *         username:
+ *         productName:
  *           type: string
- *           description: User name of the user
- *         email:
+ *           description: Name of product
+ *         productImage:
  *           type: string
- *           description: Email of the user
- *         password:
+ *           description: Product Image
+ *         countInStock:
+ *           type: number
+ *           description: Number of Available Product
+ *         rating:
+ *           type: number
+ *           description: Product rating
+ *         numReviews:
+ *           type: number
+ *           description: Product reviews
+ *         category:
  *           type: string
- *           description: 
+ *         brand:
+ *           type: string
+ *         price:
+ *           type: number
  *         
- *         createdAt:
- *           type: string
- *           format: date
- *           description: The date the book was added
- *       example:
- *         
- *         username: Charles
- *         email: hikay133@gmail.com
- *         password: xxxxxxx
+ *           
+ *        
+ *  
+ *       
  *        
  */
 
@@ -78,14 +91,111 @@ const validateToken = require("../../controllers/verifyUser/index")
  * tags:
  *   name: Product
  *   description: PRODUCTS
- * /product/getProduct:
+ * /product/getProduct/{productId}:
  *   get:
  *     summary: Get product details
  *     tags: [Product]
+ *     parameters:
+ *       - in: path
+ *         name: productId
+ *         schema: 
+ *           type: string
+ *         required: true 
+ *         description: Id of a product
  
  *     responses:
  *       200:
  *         description: Product Details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       500:
+ *         description: Some server error
+ *
+ */
+
+
+
+/**
+ * @swagger
+ * tags:
+ *   name: Product
+ *   description: PRODUCTS
+ * /product/deleteProduct/{productId}:
+ *   delete:
+ *     summary: Delete a product
+ *     tags: [Product]
+ *     parameters:
+ *       - in: path
+ *         name: productId
+ *         schema: 
+ *           type: string
+ *         required: true 
+ *         description: Id of a product
+ 
+ *     responses:
+ *       200:
+ *         description: Product deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+               
+ *       500:
+ *         description: Some server error
+ *
+ */
+
+
+/**
+ * @swagger
+ * tags:
+ *   name: Product
+ *   description: PRODUCTS
+ * /product/updateProduct/{productId}:
+ *   put:
+ *     summary: Update a product Info
+ *     tags: [Product]
+ *     parameters:
+ *       - in: path
+ *         name: productId
+ *         schema: 
+ *           type: string
+ *         required: true 
+ *         description: Id of a product
+ 
+ *     responses:
+ *       200:
+ *         description: Product Info updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       500:
+ *         description: Some server error
+ *
+ */
+
+
+/**
+ * @swagger
+ * tags:
+ *   name: Product
+ *   description: PRODUCTS
+ * /product/createProduct:
+ *   post:
+ *     summary: Create a new Product
+ *     tags: [Product]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Product'
+ *     responses:
+ *       200:
+ *         description: New product created successfully.
  *         content:
  *           application/json:
  *             schema:
@@ -126,17 +236,11 @@ const validateToken = require("../../controllers/verifyUser/index")
 
 
 
-
-
-
-
-
-
-
 router.get("/getProducts",getProducts)
-router.post("/getProduct",getProduct)
-router.post("/updateProduct",updateProduct)
-router.post("/deleteProduct",deleteProduct)
+router.get("/getProduct/:productId",getProduct)
+router.put("/updateProduct/:productId",updateProduct)
+router.delete("/deleteProduct/:productId",deleteProduct)
+router.post("/createProduct",createProduct)
 
 
 module.exports = router

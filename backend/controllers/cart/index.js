@@ -15,5 +15,9 @@ const removeFromCart = ()=>{
 
 }
 
+const getCart = (()=>{
 
-module.exports={removeFromCart,addToCart}
+})
+
+
+module.exports={removeFromCart,addToCart,getCart}
