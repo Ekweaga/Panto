@@ -5,20 +5,26 @@ const Schema = mongoose.Schema;
 
 const BlogSchema = new Schema({
 
-
-   postTitle:{
+title:{
+    type:String
+},
+   author:{
     type:String
 }
 ,
-postDesc:{
+image:{
+    type:String
+},
+content:{
     type:String
 },
     comments:{
         type:[String],
         default:[]
     },
-    postImage:{
-            type:String
+    category:{
+            type:String,
+            required:false
     },
 })
 

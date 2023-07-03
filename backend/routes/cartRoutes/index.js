@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {addToCart,removeFromCart} = require("../../controllers/cart/index")
+const {createCart,removeFromCart,getCart} = require("../../controllers/cart/index")
 const validateToken = require("../../controllers/verifyUser/index")
 
 
@@ -36,8 +36,102 @@ const validateToken = require("../../controllers/verifyUser/index")
  *        
  */
 
-router.post("/add",validateToken,addToCart)
-router.post("delete",validateToken,removeFromCart)
+
+
+
+
+
+/**
+ * @swagger
+ * tags:
+ *   name: Cart
+ *   description: CART
+ * /cart/create:
+ *   post:
+ *     summary: Create user cart
+ *     tags: [Cart]
+ *     parameters:
+ *       - in: body
+ *         name: userCart
+ *         schema: 
+ *           type: Object
+ *         required: true 
+ *         description:  quantity,productId
+ 
+ *     responses:
+ *       200:
+ *         description: Cart created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Cart'
+ *       500:
+ *         description: Some server error
+ *
+ */
+
+
+
+
+
+
+/**
+ * @swagger
+ * tags:
+ *   name: Cart
+ *   description: CART
+ * /cart/get:
+ *   get:
+ *     summary: Get User cart
+ *     tags: [Cart]
+ *    
+ 
+ *     responses:
+ *       200:
+ *         description: User Cart
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Cart'
+ *       500:
+ *         description: Some server error
+ *
+ */
+
+
+
+/**
+ * @swagger
+ * tags:
+ *   name: Cart
+ *   description: CART
+ * /cart/delete/{productId}:
+ *   delete:
+ *     summary: Create user cart
+ *     tags: [Cart]
+ *     parameters:
+ *       - in: body
+ *         name: userCart
+ *         schema: 
+ *           type: String
+ *         required: true 
+ *         description:  productId
+ 
+ *     responses:
+ *       200:
+ *         description: Cart item deleted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Cart'
+ *       500:
+ *         description: Some server error
+ *
+ */
+
+router.post("/create",validateToken,createCart)
+router.post("/delete",validateToken,removeFromCart)
+router.get("/get",validateToken,getCart)
 
 
 module.exports=router

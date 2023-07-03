@@ -20,8 +20,8 @@ app.use(bodyParser.json({extended:true}))
 //app.use(passport.initialize());
 app.use("/auth",authRoutes)
 app.use("/product",productRoutes)
-app.use("cart",cartRoutes)
-//app.use("/order",orderRoutes)
+app.use("/cart",cartRoutes)
+app.use("/order",orderRoutes)
 const options = {
     definition: {
       openapi: "3.1.0",
@@ -42,7 +42,7 @@ const options = {
         },
       ],
     },
-    apis: ["./routes/authRoutes/*.js","./routes/productRoutes/*.js","./routes/cartRoutes/*.js"],
+    apis: ["./routes/authRoutes/*.js","./routes/productRoutes/*.js","./routes/cartRoutes/*.js","./routes/orderRoutes/*.js"],
   };
   
   const specs = swaggerJsdoc(options);

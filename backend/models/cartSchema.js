@@ -42,4 +42,4 @@ bill:{
 
 
 
-module.exports =  mongoose.models.Cart || mongoose.model("Cart",UserSchema)
+module.exports =  mongoose.models.Cart || mongoose.model("Cart",CartSchema)

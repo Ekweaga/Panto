@@ -13,9 +13,9 @@ const createPost = asyncHandler(async(req,res)=>{
 
     if(req.method == "POST"){
         const post = Post.create({
-            userId:id,
-            postTitle:title || "",
-            postImage: image || ""
+            title:title || "",
+            image: image || "",
+            content:content || ""
 
 
         })
